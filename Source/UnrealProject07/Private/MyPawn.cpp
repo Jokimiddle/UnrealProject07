@@ -10,7 +10,7 @@
 AMyPawn::AMyPawn()
 {
 	PrimaryActorTick.bCanEverTick = false;
-	MoveSpeed = 5.0f;
+	MoveSpeed = 700.0f;
 
 	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule"));
 	SetRootComponent(CapsuleComponent);
@@ -64,13 +64,14 @@ void AMyPawn::Tick(float DeltaTime)
 void AMyPawn::Move_Action(const FInputActionValue& Value)
 {
 	const FVector2D MoveInput2D = Value.Get<FVector2D>();
+	float DeltaTime = GetWorld()->GetDeltaSeconds();
 	if (!FMath::IsNearlyZero(MoveInput2D.X))
 	{
-		AddActorLocalOffset(FVector(MoveInput2D.X * MoveSpeed, 0.0f, 0.0f));
+		AddActorLocalOffset(FVector(MoveInput2D.X * MoveSpeed * DeltaTime, 0.0f, 0.0f));
 	}
 	if (!FMath::IsNearlyZero(MoveInput2D.Y))
 	{
-		AddActorLocalOffset(FVector(0.0f, MoveInput2D.Y * MoveSpeed, 0.0f));
+		AddActorLocalOffset(FVector(0.0f, MoveInput2D.Y * MoveSpeed * DeltaTime, 0.0f));
 	}
 }
 
@@ -80,7 +81,6 @@ void AMyPawn::Mouse_Action(const FInputActionValue& Value)
 	if (!FMath::IsNearlyZero(MouseInput2D.X))
 	{
 		AddActorLocalRotation(FRotator(0.0f, MouseInput2D.X, 0.0f));
-		
 	}
 	if (!FMath::IsNearlyZero(MouseInput2D.Y))
 	{
@@ -123,9 +123,6 @@ void AMyPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 				);
 			}
 		}
-
 	}
-
-
 }
 

@@ -1,7 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
-
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "MyPawn.generated.h"
@@ -31,6 +28,7 @@ protected:
 	USpringArmComponent* SpringArmComponent;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Component");
 	UCameraComponent* CameraComponent;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Component");
 	UArrowComponent* ArrowComponent;
 
 public:	
