@@ -8,4 +8,6 @@
 ##### DeltaTime불러와 프레임 독립적인 이동속도 구현
 ##### 액터회전, 스프링암 회전으로 시점 회전을 구현
 
+## 사용한 에셋
+사용한 스켈레탈 메쉬: Game Animation Sample (https://fab.com/s/591b0a041ab5)
  
